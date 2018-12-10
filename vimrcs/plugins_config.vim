@@ -201,3 +201,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+""""""""""""""""""""
+" => Ack.Vim
+""""""""""""""""""""
+let g:ackprg = 'ag --nogroup --nocolor --column'
