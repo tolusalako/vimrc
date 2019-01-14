@@ -123,13 +123,16 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'] ]
+      \             ['fugitive#head', 'readonly', 'filename', 'modified'] ],
+      \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -154,7 +157,9 @@ let g:lightline.component_type = {
       \     'linter_ok': 'left',
       \ }
 
-let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? expand('%:p') : '[No Name]'
+endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -206,3 +211,9 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 " => Ack.Vim
 """"""""""""""""""""
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+
+""""""""""""""""""""
+" => Easytags
+""""""""""""""""""""
+let g:easytags_async = 1
