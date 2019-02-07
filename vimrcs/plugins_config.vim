@@ -46,7 +46,7 @@ nmap <c-n> <Plug>yankstack_substitute_newer_paste
 let g:ctrlp_working_path_mode = 0
 
 let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
+map <c-p> :CtrlPLine<cr>
 map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 20
@@ -54,6 +54,14 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 nnoremap <leader>. :CtrlPTag<cr>
 
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 """"""""""""""""""""""""""""""
 " => ZenCoding
@@ -217,3 +225,14 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " => Easytags
 """"""""""""""""""""
 let g:easytags_async = 1
+let g:easytags_cmd = '/usr/local/bin/ctags'
+
+"""""""""""""""""""
+" => Session
+"""""""""""""""""""
+"let g:session_autoload = 'yes'
+"let g:session_autosave = 'yes'
+"let g:session_default_to_last = 1
+"let g:session_autosave_periodic = 1
+"let g:session_autosave_silent = 1
+
