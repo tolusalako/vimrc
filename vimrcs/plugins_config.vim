@@ -212,7 +212,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=0
+let g:gitgutter_enabled=1
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 """"""""""""""""""""
@@ -230,9 +230,9 @@ let g:easytags_cmd = '/usr/local/bin/ctags'
 """""""""""""""""""
 " => Session
 """""""""""""""""""
-"let g:session_autoload = 'yes'
-"let g:session_autosave = 'yes'
-"let g:session_default_to_last = 1
-"let g:session_autosave_periodic = 1
-"let g:session_autosave_silent = 1
+let g:session_autoload = 'yes'
+let g:session_autosave = 'yes'
+let g:session_default_to_last = 1
+let g:session_autosave_periodic = 1
+let g:session_autosave_silent = 1
 
