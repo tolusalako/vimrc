@@ -189,15 +189,22 @@ let g:go_fmt_command = "goimports"
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['jshint'],
+\   'javascript': ['jshint', 'eslint'],
+\   'ruby': ['rubocop'],
 \   'python': ['flake8'],
 \   'go': ['go', 'golint', 'errcheck'],
 \   'kotlin': ['kotlinc', 'ktlint']
 \}
 
+let g:ale_fixers = {
+\   'ruby': ['rubocop'],
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
 
-" Disabling highlighting
+let g:ale_lint_on_save = 1
 let g:ale_set_highlights = 0
 
 let g:ale_lint_on_text_changed = 'never'
@@ -209,6 +216,9 @@ let g:ale_sign_warning = '--'
 let g:ale_completion_enabled = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_ruby_rubocop_executable = 'bundle'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -219,6 +229,11 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 " => Ack.Vim
 """"""""""""""""""""
 let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackpreview = 1
+let g:ack_autoclose = 1
+let g:ackhighlight = 1
+nnoremap <Leader>a :Ack<Space><c-r><c-w><cr>
+set switchbuf=useopen
 
 
 """"""""""""""""""""
@@ -235,4 +250,11 @@ let g:session_autosave = 'yes'
 let g:session_default_to_last = 1
 let g:session_autosave_periodic = 1
 let g:session_autosave_silent = 1
+
+"""""""""""""""
+" => Prettier
+"""""""""""""""
+" Autoformat on save
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 
