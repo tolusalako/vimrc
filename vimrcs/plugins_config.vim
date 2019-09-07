@@ -200,10 +200,12 @@ let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['prettier'],
 \   'css': ['prettier'],
+\   'python': ['autopep8'],
 \}
 
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
 
+let g:ale_fix_on_save = 0
 let g:ale_lint_on_save = 1
 let g:ale_set_highlights = 0
 
