@@ -200,7 +200,7 @@ let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['prettier'],
 \   'css': ['prettier'],
-\   'python': ['autopep8'],
+\   'python': ['black'],
 \}
 
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
